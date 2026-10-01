@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>LA Spots</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="map"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-dot"></span>
+      <span id="brandTitle">LA Spots</span>
+    </div>
+    <div class="filters" id="filters"></div>
+    <button class="btn btn-ghost" id="editToggle" title="Режим редактора">✏️ Редактор</button>
+  </header>
+
+  <div class="editbar" id="editbar" hidden>
+    <button class="btn" id="addPointBtn">📍 Точка</button>
+    <button class="btn" id="addAreaBtn">⬠ Область</button>
+    <span class="sep"></span>
+    <button class="btn btn-ghost" id="exportBtn" title="Скачать резервную копию всех мест (data.js)">⬇ Копия</button>
+    <label class="btn btn-ghost" title="Заменить все места на места из файла data.js / .json">
+      ⬆ Импорт <input type="file" id="importInput" accept=".js,.json" hidden>
+    </label>
+    <button class="btn btn-ghost" id="logoutBtn">Выйти</button>
+    <span class="mode-badge" id="modeBadge" hidden title="Правки хранятся в этом браузере. Чтобы они появились на сайте у всех: «⬇ Копия» → загрузить data.js на GitHub с заменой.">Сохранено в этом браузере · ⬇ Копия → GitHub</span>
+  </div>
+
+  <div class="hint" id="hint" hidden>
+    <span id="hintText"></span>
+    <div class="hint-actions" id="hintActions"></div>
+  </div>
+
+  <aside class="panel" id="panel" hidden>
+    <button class="panel-close" id="panelClose" aria-label="Закрыть">✕</button>
+    <div class="panel-body" id="panelBody"></div>
+  </aside>
+
+  <div class="lightbox" id="lightbox" hidden>
+    <img id="lightboxImg" alt="">
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
